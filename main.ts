@@ -91,7 +91,7 @@ for (const id of readdirSync(I).sort()) {
   if (!decoded.ok) throw new Error(`${id}: ${decoded.why}`);
   let best: Uint8Array | null = null;
   for (const c of candidates(decoded.rgba)) {
-    for (const strategy of [0, 3]) {
+    for (const strategy of [0, 3, 4, 1]) {
       const png = build(decoded.rgba, decoded.width, decoded.height, c, strategy);
       if (best === null || png.length < best.length) best = png;
     }
